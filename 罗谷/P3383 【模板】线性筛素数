@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+#define ll long long
+using namespace std;
+bool isnotprime[10000010];
+int main(){
+    int maxn,tim;
+    cin>>maxn>>tim;
+    for (int i=2;i<=maxn;i++){
+        if (!isnotprime[i]){
+            for (int l=2;1ll*i*l<=maxn;l++){
+                isnotprime[l*i]=true;
+            }
+        }
+    }
+//    for (int i=1;i<=maxn;i++) if(!isnotprime[i]) cout<<i<<endl;
+    isnotprime[1]=true;isnotprime[0]=true;
+    for (int i=1;i<=tim;i++){
+        int x;
+        cin>>x;
+        if (isnotprime[x]){
+            cout<<"No"<<endl;
+        }
+        else {
+            cout<<"Yes"<<endl;
+        }
+    }
+    return 0;
+}

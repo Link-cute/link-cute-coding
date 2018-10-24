@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+int fa[10010];
+int find(int x){
+    if (x==fa[x]) return x;
+    else return fa[x]=find(fa[x]);
+}
+int main(){
+    int num;
+    cin>>num;
+    int qu_es;
+    cin>>qu_es;
+    for (int i=1;i<=num;i++){
+        fa[i]=i;
+    }
+    for (int i=1;i<=qu_es;i++){
+        int x;
+        cin>>x;
+        int n1,n2;
+        cin>>n1>>n2;
+        if (x==1){
+            fa[find(n2)]=find(n1);
+        }
+        else {
+            if (find(n1)==find(n2)) cout<<'Y'<<endl;
+            else cout<<'N'<<endl;
+        }
+    }
+    return 0;
+}

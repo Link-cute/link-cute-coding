@@ -1,0 +1,47 @@
+#include<bits/stdc++.h>
+#define ull unsigned long long
+using namespace std;
+int a[500010],c[500010];
+int lowbit(int x){
+    return x&-x;
+}
+int num,qu_es;
+void add(int val,int x){
+    while(x<=num){
+        c[x]+=val;
+        x+=lowbit(x);
+    }
+}
+int check(int x){
+    int ans=0;
+    while(x){
+        ans+=c[x];
+        x-=lowbit(x);
+    }
+    return ans;
+}
+int sum(int la,int lb){
+    return check(lb)-check(la-1);
+}
+int main(){
+    cin>>num>>qu_es;
+    for (int i=1;i<=num;i++){
+        cin>>a[i];
+        add(a[i],i);
+    }
+    for (int i=1;i<=qu_es;i++){
+        int x;
+        cin>>x;
+        if (x==1){
+            int site,k;
+            cin>>site>>k;
+            add(k,site);
+        }
+        else{
+            int la,lb;
+            cin>>la>>lb;
+            cout<<sum(la,lb)<<endl;
+        }
+    }
+    return 0;
+}

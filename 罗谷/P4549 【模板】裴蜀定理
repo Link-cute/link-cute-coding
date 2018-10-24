@@ -1,0 +1,22 @@
+#include<bits/stdc++.h>
+#define ull unsigned long long
+using namespace std;
+int gcd(int a,int b){
+    if (b==0) return a;
+    else return gcd(b,a%b);
+}
+int main(){
+    int num;
+    cin>>num;
+    int ans;
+    cin>>ans;
+    if (ans<0) ans=-ans;
+    for (int i=2;i<=num;i++){
+        int x;
+        cin>>x;
+        if (x<0) x=-x;
+        ans=gcd(ans,x);
+    }
+    cout<<ans;
+    return 0;
+}

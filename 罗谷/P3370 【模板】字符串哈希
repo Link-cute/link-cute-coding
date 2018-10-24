@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+#define ull unsigned long long
+using namespace std;
+int hash(string s){
+    int ans=0;
+    int len=s.length();
+    for (int i=0;i<len;i++){
+        ans=1ull*ans*6371+s[i]+2121748661;
+    }
+    return ans;
+}
+int a[10010];
+int main(){
+    int num;
+    cin>>num;
+    for (int i=1;i<=num;i++){
+        string s;
+        cin>>s;
+        a[i]=hash(s);
+    }
+    sort(a+1,a+1+num);
+    int siz=unique(a+1,a+1+num)-a-1;
+    cout<<siz;
+    return 0;
+}
